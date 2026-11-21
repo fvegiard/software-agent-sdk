@@ -1,6 +1,8 @@
 name: Daily upstream sync
 
 on:
+  schedule:
+    - cron: '23 9 * * *'
   workflow_dispatch:
 
 permissions:
@@ -24,5 +26,5 @@ jobs:
         run: |
           gh api --method POST "repos/$GH_REPO/merge-upstream" \
             -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2026-03-10" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
             -f branch="$SYNC_BRANCH"
